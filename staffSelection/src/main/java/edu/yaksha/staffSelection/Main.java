@@ -11,19 +11,7 @@ import java.util.Scanner;
 public class Main 
 {
 	
-	public static int totalCalculation (Applicant app)
-	{
-		int total=0;
-		if(app.getSubject1()>=50 && app.getSubject2()>=50 && app.getSubject3()>=50)
-			total=app.getSubject1()+ app.getSubject2()+ app.getSubject3();
-			 return total;
-	}
-	 public static int percentageCalculation (int total)
-	 {
-		 double x=((double)total/300)*100;
-		 int val=(int)x;
-		 return val;
-	 }
+
     public static void main( String[] args )
     {
         Scanner scanner=new Scanner(System.in);
@@ -36,8 +24,8 @@ public class Main
         	 String appDetails=scanner.nextLine();
         	 String appArr[]=appDetails.split(",");
         	 Applicant applicant=new Applicant(appArr[0],Integer.parseInt(appArr[1]) ,Integer.parseInt(appArr[2]),Integer.parseInt(appArr[3]));
-        	 int total=totalCalculation(applicant);
-        	 int percentage=percentageCalculation(total);
+        	 int total=new ApplicantService().totalCalculation(applicant);
+        	 int percentage=new ApplicantService().percentageCalculation(total);
         	 if(total>0 && percentage>=70)
         	 {
         		 applicant.setTotal(total);
